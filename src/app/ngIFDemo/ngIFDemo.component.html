@@ -1,0 +1,29 @@
+<!-- Demo of NG IF-ELSE  -->
+<div *ngIf="isToggle;then oddClicked else evenClicked">
+  Demo of NGIFELSE //This content will not display
+</div>
+
+<!-- Demo of NG ELSE  -->
+<div *ngIf="isToggle;else evenClicked">
+  Initial Content // This content will display
+</div>
+<button (click)="toggle()" type="button">Toggle</button>
+
+<!-- LOCAL ASSINMENT Variable USING IF  -->
+<div *ngIf="favouriteLangs.frontEnd;let myFrontEnd">
+  <ul *ngFor="let item of myFrontEnd">
+    <li>{{item}}</li>
+  </ul>
+</div>
+
+
+
+<ng-template #oddClicked>
+  Odd No.of Clicks
+</ng-template>
+
+<hr>
+
+<ng-template #evenClicked>
+  Even No.of clicks
+</ng-template>

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <form>
+                <label class="control-label">Choose Role</label>
+                <select multiple name="role" [(ngModel)]="role" (change)="rolesList(role)" class="form-control">
+                    <option *ngFor="let role of roles" [ngValue]="role">
+                        {{role.display}}
+                    </option>
+                </select>
+                 <b *ngIf="selectedRoles;let x">
+                    <ul>
+                        <li *ngFor="let multiSelect of x;let i=index" >{{multiSelect[i].value}}</li>
+                    </ul>
+                 </b> 
+            </form>
+        </div>
+    </div>
+</div>

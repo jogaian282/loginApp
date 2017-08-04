@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-muted text-center">
+        SIGN-IN
+      </h2>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-5">
+      <form class="form-horizontal" #loginApp="ngForm" (ngSubmit)="onSubmit(loginApp)"  novalidate>
+        <div class="form-group required">
+          <label class="control-label col-md-4">
+            Username
+          </label>
+          <div class="col-md-8">
+            <input type="text" [(ngModel)]="user.username" name="username" class="form-control" #txtUserName="ngModel" minlength="2" #userName maxlength="50" required  placeholder="Enter Username">
+            <div [hidden]="!(txtUserName.invalid && (txtUserName.dirty || formOnSubmit))" class="alert alert-danger">
+              <div *ngIf ="txtUserName.errors && txtUserName.errors.required">
+                User Name is required
+              </div>
+              <div *ngIf ="txtUserName.errors && txtUserName.errors.minlength">
+                 User Name must be at least 2 characters long.
+              </div>
+              <div *ngIf ="txtUserName.errors && txtUserName.errors.maxlength">
+                User Name cannot be more than 50 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group required">
+          <label class="control-label col-md-4">
+            Password
+          </label>
+          <div class="col-md-8">
+            <input type="password" [(ngModel)]="user.password" name="password" #txtPassword="ngModel" class="form-control" required  placeholder="Enter Password">
+            <div [hidden]="!((txtPassword.dirty || formOnSubmit) && txtPassword.invalid)" class="alert alert-danger">
+              <div *ngIf ="txtPassword.errors && txtPassword.errors.required">
+                Password is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Login</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="well well-sm clearfix">
+    <div class="col-md-offset-3 col-md-5" *ngIf="user">
+      <ul class="list-inline">
+        {{ user  | json }}
+      </ul>
+    </div>
+  </div> -->
+</div>
